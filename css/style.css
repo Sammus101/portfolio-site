@@ -1,0 +1,13 @@
+/* Design tokens go here once the design system arrives (colors, fonts, spacing) */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #111111;
+  --font-body: system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  margin: 0;
+}
