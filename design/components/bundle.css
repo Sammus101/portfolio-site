@@ -1,0 +1,73 @@
+/* Samuel Ehret — shared component utilities. Loaded after tokens.css on every preview. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+.ds-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--space-64);
+}
+
+.ds-card {
+  background: var(--surface);
+  border: var(--border-hairline) solid var(--border-slate);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-elevated);
+  padding: var(--space-32) var(--space-36);
+}
+
+.ds-caps { text-transform: uppercase; }
+
+.ds-eyebrow {
+  display: block;
+  margin-bottom: var(--space-8);
+  color: var(--gold-600);
+  text-transform: uppercase;
+}
+
+.ds-gold-gradient-text {
+  background: linear-gradient(135deg, var(--gold-100), var(--gold-600));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.ds-fracture-stroke {
+  fill: none;
+  stroke: url(#ds-gold-seam-gradient);
+  stroke-width: var(--border-fracture);
+  filter: drop-shadow(var(--shadow-fracture-glow));
+  stroke-linecap: round;
+}
+
+.ds-hover-lift {
+  transition: border-color 200ms ease, box-shadow 200ms ease, transform 200ms ease;
+}
+.ds-hover-lift:hover {
+  border-color: var(--gold-600);
+  box-shadow: var(--shadow-gold-glow), var(--shadow-elevated);
+  transform: translateY(-2px);
+}
+
+.ds-live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-600);
+  box-shadow: var(--shadow-gold-glow);
+  animation: ds-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes ds-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(0.82); }
+}
+
+.ds-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+}

@@ -1,0 +1,42 @@
+<!-- @dsCard height=320 -->
+<div style="background:var(--bg-void); width:960px; height:320px; position:relative;">
+  <svg width="960" height="320" viewBox="0 0 960 320">
+    <!--
+      blocks: gold-600 slab (radius-sm) bleeding off the top+right edges, x640-980×0-320;
+        gold-100 tint block (radius-sm) 170×110 tucked at its base, overlapping it 90px;
+        text-secondary band (radius-sm) 480×90 bleeding off the bottom-right — the "surface"
+        token is deliberately near-invisible against bg-void by design, so the relief block
+        binds to text-secondary instead, the palette's one token that reads clearly here;
+        sizes and gaps are space-64/space-16 multiples, all right of x=480
+      arrangement: tall staggered slab + tint block + band, overlapping planes, nothing symmetric —
+        the same asymmetric, edge-bleeding composition the homepage grid itself uses
+      pattern: literal motif — kintsugi fracture seams (border-fracture stroke width, the
+        gold-100→gold-600 gradient, shadow-fracture-glow filter) cut through the blocks, because
+        the brand IS the repaired crack, not a generic dot/stripe/grid standing in for it
+      scales: radius-sm corners throughout; border-fracture stroke width; space-64 held as the
+        margin between the name and the block field
+    -->
+    <defs>
+      <linearGradient id="cv-gold-seam" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="var(--gold-100)"/>
+        <stop offset="1" stop-color="var(--gold-600)"/>
+      </linearGradient>
+    </defs>
+
+    <rect class="cv-band" x="480" y="270" width="480" height="90" rx="4" fill="var(--text-secondary)"/>
+    <rect class="cv-gold" x="640" y="0" width="340" height="320" rx="4" fill="var(--gold-600)"/>
+    <rect class="cv-tint" x="560" y="230" width="170" height="110" rx="4" fill="var(--gold-100)"/>
+
+    <path d="M700,30 C650,90 600,150 640,230" fill="none" stroke="url(#cv-gold-seam)" stroke-width="var(--border-fracture)" stroke-linecap="round" style="filter:drop-shadow(var(--shadow-fracture-glow));"/>
+    <path d="M600,258 C650,278 700,288 758,300" fill="none" stroke="url(#cv-gold-seam)" stroke-width="var(--border-fracture)" stroke-linecap="round" style="filter:drop-shadow(var(--shadow-fracture-glow));"/>
+    <path d="M820,0 C800,80 840,170 812,320" fill="none" stroke="url(#cv-gold-seam)" stroke-width="var(--border-fracture)" stroke-linecap="round" style="filter:drop-shadow(var(--shadow-fracture-glow));"/>
+    <circle cx="640" cy="230" r="3" fill="var(--gold-600)"/>
+    <circle cx="812" cy="320" r="3" fill="var(--gold-600)"/>
+
+    <text x="64" font-family="var(--font-serif)" font-size="112" font-weight="400" fill="var(--text-primary)">
+      <tspan x="64" y="128">Samuel</tspan>
+      <tspan x="64" y="234">Ehret</tspan>
+    </text>
+    <text x="64" y="270" font-family="var(--font-mono)" font-size="14" fill="var(--text-secondary)">Builder, thinker, explorer — kintsugi for a life in fragments.</text>
+  </svg>
+</div>

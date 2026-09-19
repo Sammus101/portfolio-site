@@ -1,0 +1,13 @@
+<!-- @dsCard group="Decorative" height=100 subtitle="A small gradient sphere marking live/active status — nav bar, dashboard" -->
+<div style="background:var(--bg-void); padding:var(--space-24); display:flex; align-items:center; gap:var(--space-16);">
+  <svg width="22" height="22" viewBox="0 0 22 22">
+    <defs>
+      <radialGradient id="orb-fill" cx="35%" cy="30%" r="70%">
+        <stop offset="0" stop-color="var(--gold-100)"/>
+        <stop offset="1" stop-color="var(--gold-600)"/>
+      </radialGradient>
+    </defs>
+    <circle cx="11" cy="11" r="9" fill="url(#orb-fill)" style="filter:drop-shadow(var(--shadow-gold-glow));"/>
+  </svg>
+  <span class="nav-link ds-caps" style="color:var(--text-secondary);">Live System</span>
+</div>

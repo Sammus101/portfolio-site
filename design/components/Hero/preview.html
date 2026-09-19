@@ -1,0 +1,53 @@
+<!-- @dsCard group="Layout" height=460 subtitle="Section 1 — two-column hero: index, name, intro / fractured portrait" -->
+<div style="display:flex; gap:var(--space-64); background:var(--bg-void); padding:var(--space-64); max-width:1040px; align-items:flex-start;">
+
+  <div style="flex:1; min-width:0;">
+    <span class="label ds-caps" style="display:block; margin-bottom:var(--space-16);">01 / Who Am I?</span>
+    <h1 class="hero-title" style="color:var(--text-primary); margin:0 0 var(--space-16);">Samuel<br/>Ehret</h1>
+    <p class="body" style="color:var(--text-primary); margin:0 0 var(--space-16); font-weight:400;">Builder, Thinker, Explorer</p>
+    <p class="body" style="color:var(--text-secondary); max-width:420px; margin:0;">Three lines on human systems, capital and technology — the same register as the rest of the page, never a pitch.</p>
+  </div>
+
+  <div style="flex:1; position:relative; min-height:340px;">
+    <svg width="100%" height="340" viewBox="0 0 420 340" style="position:absolute; inset:0; overflow:visible;">
+      <defs>
+        <linearGradient id="ds-gold-seam-gradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stop-color="var(--gold-100)"/>
+          <stop offset="1" stop-color="var(--gold-600)"/>
+        </linearGradient>
+        <clipPath id="ds-shard-a"><polygon points="60,10 230,0 210,150 40,170"/></clipPath>
+        <clipPath id="ds-shard-b"><polygon points="235,5 340,40 300,180 210,150"/></clipPath>
+        <clipPath id="ds-shard-c"><polygon points="40,175 210,155 190,320 20,300"/></clipPath>
+        <clipPath id="ds-shard-d"><polygon points="215,155 300,185 320,320 195,325"/></clipPath>
+        <linearGradient id="ds-shard-fill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#2A2D35"/>
+          <stop offset="1" stop-color="#16181D"/>
+        </linearGradient>
+      </defs>
+
+      <!-- placeholder shards standing in for a real grayscale portrait, clipped as it would be -->
+      <g fill="url(#ds-shard-fill)">
+        <rect x="0" y="0" width="420" height="340" clip-path="url(#ds-shard-a)"/>
+        <rect x="0" y="0" width="420" height="340" clip-path="url(#ds-shard-b)"/>
+        <rect x="0" y="0" width="420" height="340" clip-path="url(#ds-shard-c)"/>
+        <rect x="0" y="0" width="420" height="340" clip-path="url(#ds-shard-d)"/>
+      </g>
+
+      <!-- kintsugi seams running through the gaps between shards -->
+      <path class="ds-fracture-stroke" d="M62,10 C130,60 170,110 210,150"/>
+      <path class="ds-fracture-stroke" d="M235,5 C215,60 210,105 210,150"/>
+      <path class="ds-fracture-stroke" d="M40,172 C130,165 170,160 213,155"/>
+      <path class="ds-fracture-stroke" d="M213,155 C205,220 200,280 196,323"/>
+      <path class="ds-fracture-stroke" d="M213,155 C250,170 280,180 300,183"/>
+
+      <!-- concept-graph nodes: ideas / capital / technology -->
+      <circle cx="70" cy="40" r="4" fill="var(--gold-600)"/>
+      <circle cx="360" cy="70" r="4" fill="var(--gold-600)"/>
+      <circle cx="30" cy="300" r="4" fill="var(--gold-600)"/>
+      <line x1="70" y1="40" x2="235" y2="5" stroke="var(--border-slate)" stroke-width="1"/>
+      <line x1="360" y1="70" x2="300" y2="185" stroke="var(--border-slate)" stroke-width="1"/>
+      <line x1="30" y1="300" x2="195" y2="300" stroke="var(--border-slate)" stroke-width="1"/>
+    </svg>
+    <span class="label" style="position:absolute; bottom:0; right:0; color:var(--text-secondary); opacity:0.8;">portrait pending</span>
+  </div>
+</div>

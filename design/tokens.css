@@ -1,0 +1,54 @@
+/* Samuel Ehret — compiled design tokens.
+   Source of truth is tokens.json; regenerate this file if tokens.json changes.
+   Load Google Fonts for Instrument Serif, Inter and JetBrains Mono before this file
+   (see HOW-TO-USE.md). */
+
+:root, [data-theme="dark"] {
+  /* color */
+  --bg-void: #0D0E11;
+  --surface: rgba(22, 24, 29, 0.8);
+  --border-slate: #252830;
+  --text-primary: #F5F2EB;
+  --text-secondary: #9E9B93;
+  --gold-600: #C59B27;
+  --gold-100: #F0D38D;
+
+  /* shadow */
+  --shadow-elevated: 0px 24px 48px -12px rgba(0, 0, 0, 0.75);
+  --shadow-gold-glow: 0px 0px 12px rgba(212, 175, 55, 0.35);
+  --shadow-fracture-glow: 0px 0px 6px rgba(229, 193, 88, 0.3);
+}
+
+:root {
+  /* spacing */
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-36: 36px;
+  --space-64: 64px;
+  --space-140: 140px;
+
+  /* radius */
+  --radius-sm: 4px;
+
+  /* border widths */
+  --border-hairline: 1px;
+  --border-fracture: 1.5px;
+
+  /* layout */
+  --container-max: 1440px;
+
+  /* type families */
+  --font-serif: "Instrument Serif", "PP Editorial New", Georgia, serif;
+  --font-sans: "Inter", "Geist Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+
+/* type styles (one class per tokens.json type style) */
+.hero-title    { font-family: var(--font-serif); font-size: 72px; line-height: 1.0; font-weight: 400; }
+.section-header{ font-family: var(--font-serif); font-size: 40px; line-height: 1.1; font-weight: 400; }
+.nav-wordmark  { font-family: var(--font-serif); font-size: 18px; line-height: 1.2; font-weight: 400; }
+.body          { font-family: var(--font-sans);  font-size: 16px; line-height: 1.6; font-weight: 400; }
+.label         { font-family: var(--font-mono);  font-size: 12px; line-height: 1.3; font-weight: 400; letter-spacing: 0.08em; }
+.nav-link      { font-family: var(--font-mono);  font-size: 13px; line-height: 1.4; font-weight: 400; letter-spacing: 0.04em; }

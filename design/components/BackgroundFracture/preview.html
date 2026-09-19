@@ -1,0 +1,23 @@
+<!-- @dsCard group="Decorative" height=260 subtitle="Full-bleed page background — stone grain plus a sparse, page-wide crack network" -->
+<div style="position:relative; width:100%; height:260px; background:var(--bg-void); overflow:hidden;">
+  <svg width="100%" height="100%" viewBox="0 0 960 260" preserveAspectRatio="none" style="position:absolute; inset:0;">
+    <defs>
+      <filter id="bgf-grain">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" stitchTiles="stitch" result="n"/>
+        <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.04 0"/>
+      </filter>
+      <linearGradient id="bgf-gold" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="var(--gold-100)"/>
+        <stop offset="1" stop-color="var(--gold-600)"/>
+      </linearGradient>
+    </defs>
+    <rect width="960" height="260" fill="var(--bg-void)"/>
+    <rect width="960" height="260" filter="url(#bgf-grain)"/>
+    <g fill="none" stroke="url(#bgf-gold)" stroke-width="var(--border-fracture)" stroke-linecap="round" style="filter:drop-shadow(var(--shadow-fracture-glow)); opacity:0.5;">
+      <path d="M0,42 C160,10 240,92 380,58 C520,26 600,112 760,66 C860,44 900,88 960,58"/>
+      <path d="M130,0 C150,58 96,118 152,176 C182,214 158,260 192,260"/>
+      <path d="M610,0 C630,48 566,86 624,138 C662,168 640,218 704,260"/>
+      <path d="M0,206 C120,196 204,232 322,214 C420,198 484,232 604,218"/>
+    </g>
+  </svg>
+</div>
