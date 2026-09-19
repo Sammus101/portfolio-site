@@ -46,6 +46,12 @@ export function BackgroundFracture() {
           <stop offset="0.45" stopColor="#000" stopOpacity="0" />
           <stop offset="1" stopColor="#000" stopOpacity="0.7" />
         </radialGradient>
+        {/* Keeps the text column readable where the stone catches light. */}
+        <linearGradient id="rock-readable" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stopColor="#000" stopOpacity="0.5" />
+          <stop offset="0.5" stopColor="#000" stopOpacity="0.22" />
+          <stop offset="0.75" stopColor="#000" stopOpacity="0" />
+        </linearGradient>
         <linearGradient id="bgf-gold" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0" stopColor="var(--seam-hi)" />
           <stop offset="1" stopColor="var(--seam-lo)" />
@@ -54,11 +60,11 @@ export function BackgroundFracture() {
 
       <rect width="1440" height="900" fill="var(--bg-void)" />
       <image
-        href="/textures/rock-dark.webp"
+        href="/textures/rock-slate.webp"
         width="1440"
         height="900"
         preserveAspectRatio="xMidYMid slice"
-        opacity={0.4}
+        opacity={0.68}
       />
       <rect width="1440" height="900" filter="url(#rock-pockets)" opacity={0.7} />
 
@@ -69,6 +75,7 @@ export function BackgroundFracture() {
       </g>
 
       <rect width="1440" height="900" filter="url(#rock-grain)" />
+      <rect width="1440" height="900" fill="url(#rock-readable)" />
       <rect width="1440" height="900" fill="url(#rock-vignette)" />
 
       <g className="fracture-fill" fill="url(#bgf-gold)" opacity={0.28}>
