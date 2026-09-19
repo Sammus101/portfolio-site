@@ -135,10 +135,15 @@ Under consideration, waiting on the design sheet:
   the Tailwind theme in `src/app/globals.css`. Dark-only for now; a light theme is optional later.
 - Homepage hero built: nav, hero with generated `KnowledgeGraph`, five-shard gateway strip,
   mobile layout (stacked strip, Menu button below 880px).
-- Cracks are filled torn-edge shapes with variable thickness (`src/lib/crack.ts`), in a matte
-  antique gold (`--seam-hi` / `--seam-lo`), not the brighter text gold.
-- Background is a graded CC0 rock texture (ambientCG Rock031, `public/textures/rock-dark.webp`)
-  plus SVG fissures, pockets, grain and vignette (`BackgroundFracture`).
+- Cracks (kintsugi) are generated in `src/lib/crack.ts`: angular, ripped-paper seams with strongly
+  varied thickness and a minimum width, and `join()` patches that fill the whole gap between two
+  seams that meet. All polygons share one winding direction — mixed windings cancel out under the
+  nonzero fill rule and leave thin holes, so keep that. Gold is metallic (banded gradient + lit
+  grain filter) in `src/components/fracture/gold-defs.tsx`; each `<svg>` needs its own copy.
+- Background is a graded stone photo (`public/textures/rock-slate.webp`, from a Magnific image
+  Samuel supplied — licence/attribution still to be confirmed) plus pockets, grain, vignette and a
+  left-side readability falloff (`BackgroundFracture`). It has no lines on it: gold only appears in
+  the foreground seams. The 10 MB original stays out of git (see `.gitignore`).
 - Destinations (nav + strip) in `src/content/destinations.ts` are placeholders until the design
-  settles. An AI-rendered rock background from Samuel may replace the texture.
+  settles.
 - Next: keep refining the design, then populate the site with real content.

@@ -1,32 +1,30 @@
+import { GoldDefs } from "@/components/fracture/gold-defs";
 import { KnowledgeGraph } from "@/components/fracture/knowledge-graph";
-import { fracture } from "@/lib/crack";
+import { fracture, join } from "@/lib/crack";
 
-// Foreground seams: kept off the graph's centre label, running along its rim and into the strip below.
+// Foreground seams (kintsugi): thin angular cracks. Where two meet, the gap between them fills
+// with gold. Coordinates are in the 1440x640 viewBox, which is anchored to the bottom edge.
 const SEAMS_DESKTOP = [
-  fracture([[1372, 0], [1346, 90], [1396, 190], [1362, 290], [1418, 380], [1440, 410]], { seed: 3, width: 5.0, jitter: 9, branches: 3 }),
-  fracture([[1010, 530], [930, 470], [850, 505], [790, 565], [770, 640]], { seed: 8, width: 4.5, jitter: 8, branches: 2 }),
-  fracture([[1440, 480], [1360, 510], [1290, 565], [1230, 605], [1215, 640]], { seed: 12, width: 4.0, jitter: 7, branches: 2 }),
-  fracture([[0, 400], [80, 470], [170, 505], [260, 565], [340, 640]], { seed: 5, width: 4.5, jitter: 8, branches: 3 }),
-  // the tear where the hero surface meets the strip
-  fracture([[-20, 634], [360, 624], [760, 638], [1100, 626], [1460, 636]], { seed: 21, width: 4.0, jitter: 4, step: 18, branches: 4 }),
+  fracture([[1372, 0], [1346, 90], [1396, 190], [1362, 290], [1418, 380], [1440, 410]], { seed: 3, width: 3, jitter: 10, branches: 1 }),
+  // horizon seam, in three parts so the joints can sit between them
+  fracture([[-20, 626], [120, 630], [240, 620], [340, 628]], { seed: 21, width: 3, jitter: 5, swells: 1 }),
+  fracture([[340, 628], [470, 620], [570, 632], [690, 622], [770, 626]], { seed: 22, width: 3, jitter: 5, swells: 2 }),
+  join([[770, 626], [790, 565], [850, 505], [930, 470], [1010, 528]], [[770, 626], [900, 618], [1000, 628], [1100, 620], [1215, 626]], { seed: 8, reach: 125, width: 3, jitter: 8 }),
+  join([[1215, 626], [1232, 600], [1290, 566], [1360, 510], [1440, 480]], [[1215, 626], [1310, 632], [1440, 626]], { seed: 12, reach: 85, width: 3, jitter: 7 }),
+  join([[340, 628], [300, 572], [250, 540], [160, 508], [60, 470], [-10, 455]], [[340, 628], [240, 620], [120, 630], [-20, 624]], { seed: 5, reach: 100, width: 3, jitter: 7 }),
 ];
 
 const SEAMS_MOBILE = [
-  fracture([[400, 0], [372, 120], [404, 240], [378, 330]], { seed: 14, width: 4.5, jitter: 8, branches: 2 }),
-  fracture([[-10, 430], [40, 520], [30, 610], [86, 700]], { seed: 15, width: 4.0, jitter: 7, branches: 2 }),
-  fracture([[-20, 698], [120, 690], [260, 702], [410, 694]], { seed: 16, width: 4.0, jitter: 4, step: 16, branches: 3 }),
+  fracture([[400, 0], [372, 120], [404, 240], [378, 330]], { seed: 14, width: 3, jitter: 9, branches: 1 }),
+  fracture([[-20, 694], [30, 698], [86, 690]], { seed: 16, width: 3, jitter: 4, swells: 1 }),
+  join([[86, 690], [60, 640], [30, 560], [-10, 500]], [[86, 690], [200, 684], [300, 694], [410, 688]], { seed: 15, reach: 100, width: 3, jitter: 7 }),
 ];
 
 function Seams({ paths, id, className, viewBox }: { paths: string[]; id: string; className: string; viewBox: string }) {
   return (
-    <svg aria-hidden className={className} viewBox={viewBox} preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="var(--seam-hi)" />
-          <stop offset="1" stopColor="var(--seam-lo)" />
-        </linearGradient>
-      </defs>
-      <g className="fracture-fill" fill={`url(#${id})`}>
+    <svg aria-hidden className={className} viewBox={viewBox} preserveAspectRatio="xMidYMax slice">
+      <GoldDefs id={id} />
+      <g fill={`url(#${id})`} filter={`url(#${id}-metal)`}>
         {paths.map((d, i) => (
           <path key={i} d={d} />
         ))}

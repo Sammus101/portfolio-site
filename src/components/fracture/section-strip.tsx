@@ -1,40 +1,20 @@
 import Link from "next/link";
 
+import { GoldDefs } from "@/components/fracture/gold-defs";
 import { DESTINATIONS } from "@/content/destinations";
 import { fracture } from "@/lib/crack";
 
-// Vertical tear between shards (desktop) and horizontal tear between rows (mobile).
+// Vertical seam between shards (desktop) and horizontal seam between rows (mobile).
 const V_CRACKS = DESTINATIONS.slice(0, -1).map((_, i) =>
-  fracture([[24, 0], [16, 60], [30, 110], [18, 160], [24, 210]], {
-    seed: 40 + i,
-    width: 4.0,
-    jitter: 5,
-    step: 12,
-    branches: 2,
-  }),
+  fracture([[24, 0], [17, 60], [30, 112], [19, 162], [24, 210]], { seed: 40 + i, width: 2.6, jitter: 4, swells: 1 }),
 );
 const H_CRACKS = DESTINATIONS.slice(0, -1).map((_, i) =>
-  fracture([[-10, 24], [110, 18], [230, 30], [340, 20], [410, 26]], {
-    seed: 50 + i,
-    width: 3.5,
-    jitter: 5,
-    step: 14,
-    branches: 2,
-  }),
+  fracture([[-10, 24], [110, 18], [230, 30], [340, 20], [410, 26]], { seed: 50 + i, width: 2.4, jitter: 4, swells: 1 }),
 );
-const CORNER_L = fracture([[0, 40], [22, 24], [40, 30], [70, 8]], { seed: 61, width: 3.5, jitter: 3, step: 9, branches: 1 });
-const CORNER_R = fracture([[100, 36], [78, 22], [58, 28], [30, 6]], { seed: 62, width: 3.5, jitter: 3, step: 9, branches: 1 });
+const CORNER_L = fracture([[0, 40], [22, 26], [40, 32], [72, 8]], { seed: 61, width: 2.4, jitter: 3, swells: 1 });
+const CORNER_R = fracture([[100, 36], [78, 24], [58, 30], [30, 6]], { seed: 62, width: 2.4, jitter: 3, swells: 1 });
 
-function Gold({ id }: { id: string }) {
-  return (
-    <defs>
-      <linearGradient id={id} x1="0" y1="0" x2="1" y2="1">
-        <stop offset="0" stopColor="var(--seam-hi)" />
-        <stop offset="1" stopColor="var(--seam-lo)" />
-      </linearGradient>
-    </defs>
-  );
-}
+const Gold = GoldDefs;
 
 /**
  * Gateway strip: one continuous surface split into flush shards by gold cracks.
@@ -73,7 +53,7 @@ export function SectionStrip() {
                   className="pointer-events-none absolute top-0 right-0 hidden h-full w-12 translate-x-1/2 md:block"
                 >
                   <Gold id={`ss-v-${i}`} />
-                  <path className="fracture-fill" fill={`url(#ss-v-${i})`} d={V_CRACKS[i]} />
+                  <path fill={`url(#ss-v-${i})`} filter={`url(#ss-v-${i}-metal)`} d={V_CRACKS[i]} />
                 </svg>
                 <svg
                   aria-hidden
@@ -82,7 +62,7 @@ export function SectionStrip() {
                   className="pointer-events-none absolute inset-x-0 bottom-0 h-12 w-full translate-y-1/2 md:hidden"
                 >
                   <Gold id={`ss-h-${i}`} />
-                  <path className="fracture-fill" fill={`url(#ss-h-${i})`} d={H_CRACKS[i]} />
+                  <path fill={`url(#ss-h-${i})`} filter={`url(#ss-h-${i}-metal)`} d={H_CRACKS[i]} />
                 </svg>
               </>
             )}
@@ -92,11 +72,11 @@ export function SectionStrip() {
 
       <svg aria-hidden viewBox="0 0 100 48" className="pointer-events-none absolute bottom-0 left-0 hidden h-12 w-24 md:block">
         <Gold id="ss-cl" />
-        <path className="fracture-fill" fill="url(#ss-cl)" d={CORNER_L} />
+        <path fill="url(#ss-cl)" filter="url(#ss-cl-metal)" d={CORNER_L} />
       </svg>
       <svg aria-hidden viewBox="0 0 100 48" className="pointer-events-none absolute right-0 bottom-0 hidden h-12 w-24 md:block">
         <Gold id="ss-cr" />
-        <path className="fracture-fill" fill="url(#ss-cr)" d={CORNER_R} />
+        <path fill="url(#ss-cr)" filter="url(#ss-cr-metal)" d={CORNER_R} />
       </svg>
     </nav>
   );
