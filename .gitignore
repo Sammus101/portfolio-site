@@ -41,3 +41,8 @@ next-env.d.ts
 
 # large original source images (only the compressed versions in public/ ship)
 design/inspiration/abstract-dark-grey-stone-background-texture.jpg
+design/inspiration/portrait*
+design/inspiration/PXL_*
+design/inspiration/Gemini_Generated_Image_bnstg4bnstg4bnst.jpg
+design/inspiration/Gemini_Generated_Image_db0p3cdb0p3cdb0p.jpg
+.playwright-mcp/

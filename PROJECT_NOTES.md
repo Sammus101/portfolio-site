@@ -147,3 +147,32 @@ Under consideration, waiting on the design sheet:
 - Destinations (nav + strip) in `src/content/destinations.ts` are placeholders until the design
   settles.
 - Next: keep refining the design, then populate the site with real content.
+
+## Progress: homepage bands + portrait candidates (2026-09-20)
+
+- Homepage rebuilt as full-width bands (chosen for easier maintenance and mobile): Hero, A Life in
+  Fragments, What Occupies My Mind, Selected Work, Now, There's More to Explore. Each band is
+  separated by a generated torn gold seam (`src/components/home/band.tsx`; sections in
+  `src/components/home/sections.tsx`). The old shard strip is no longer on the homepage.
+- **All homepage copy lives in `src/content/home.ts`.** Project cards come from
+  `src/content/projects.ts`. `themes.ts`, `timeline.ts` and `right-now.ts` were removed.
+- Portrait candidates (three photos, same treatment: cut-out, graded monochrome, gold cracks masked
+  to the figure, bottom fade) are shown on the temporary `/experiments` page
+  (`src/components/site/portrait-card.tsx`). Cut-outs were made locally with a non-generative
+  approach; the sky photo (C) still needs a background-remover model, which was too slow to
+  download. The portrait WebPs in `public/images/portraits/` are deliberately not committed.
+- Beyond the Résumé section is deferred. Nav/destination labels stay placeholders until the hero
+  page is done.
+
+## Next steps (agreed 2026-09-20)
+
+1. **Samuel chooses the hero portrait** (A, B or C on `/experiments`). Then it goes in the hero, the
+   other candidates are deleted, and `/experiments` returns to a placeholder.
+2. **Timeline ("A Life in Fragments"), designed together.** Currently just six words in a path.
+   Decide the structure and content with Samuel: what each fragment says, dates, how it looks.
+3. **Make elements a bit interactive** (motion is already installed): e.g. hover/reveal on the
+   theme tiles, expandable timeline fragments, scroll reveals, project card hovers. Keep it
+   subtle and on-brand; decide per element with Samuel.
+4. **Samuel supplies a large amount of raw text.** Claude turns it into structured copy in
+   `src/content/home.ts` (and the timeline/project data files), asking before rewriting his voice.
+5. Then: spacing polish, remaining pages, licence resolution, Vercel deployment.

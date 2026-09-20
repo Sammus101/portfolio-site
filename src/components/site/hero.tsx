@@ -1,5 +1,6 @@
 import { GoldDefs } from "@/components/fracture/gold-defs";
 import { KnowledgeGraph } from "@/components/fracture/knowledge-graph";
+import { home } from "@/content/home";
 import { fracture, join } from "@/lib/crack";
 
 // Foreground seams (kintsugi): thin angular cracks. Where two meet, the gap between them fills
@@ -35,7 +36,7 @@ function Seams({ paths, id, className, viewBox }: { paths: string[]; id: string;
 
 export function Hero() {
   return (
-    <section id="top" className="relative flex-1 overflow-hidden">
+    <section id="top" className="relative overflow-hidden">
       <Seams
         paths={SEAMS_DESKTOP}
         id="hero-gold"
@@ -52,15 +53,20 @@ export function Hero() {
       <div className="relative mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-10 px-6 py-14 md:min-h-[560px] md:grid-cols-12 md:px-10 md:py-10 lg:px-16">
         <div className="md:col-span-7">
           <h1 className="hero-title text-[clamp(44px,12vw,72px)] text-ivory uppercase md:text-[clamp(44px,6.4vw,92px)]">
-            Samuel Ehret
+            {home.hero.name}
           </h1>
           <p className="mt-4 font-serif text-[clamp(18px,4.6vw,22px)] leading-snug text-ivory/90">
-            Technology &amp; Product Professional / Thinker / Investor / Lifelong Learner
+            {home.hero.subtitle}
           </p>
-          <p className="body mt-8 max-w-[34rem] text-ash">
-            Building, thinking, and investing at the intersections of human systems, capital, and
-            technology. An attempt to weave fragmented insights into cohesive forms.
+          <p className="mt-8 max-w-[30rem] font-serif text-[clamp(22px,5vw,30px)] leading-snug text-ivory italic">
+            &ldquo;{home.hero.quote}&rdquo;
           </p>
+          <a
+            href={home.hero.cta.href}
+            className="nav-link mt-10 inline-block border border-gold-600 px-5 py-3 text-ivory transition-colors hover:bg-gold-600/10 hover:text-gold-100"
+          >
+            [{home.hero.cta.label}]
+          </a>
         </div>
         <div className="md:col-span-5 md:-mt-10 lg:-mr-8">
           <KnowledgeGraph className="mx-auto h-auto w-full max-w-[520px]" />

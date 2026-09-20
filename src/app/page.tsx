@@ -1,4 +1,4 @@
-import { SectionStrip } from "@/components/fracture/section-strip";
+import { Explore, Fragments, Mind, Now, SelectedWork } from "@/components/home/sections";
 import { Hero } from "@/components/site/hero";
 import { SiteHeader } from "@/components/site/header";
 
@@ -8,7 +8,11 @@ export default function Home() {
       <SiteHeader />
       <main className="flex flex-1 flex-col">
         <Hero />
-        <SectionStrip />
+        <Fragments />
+        <Mind />
+        <SelectedWork />
+        <Now />
+        <Explore />
       </main>
     </div>
   );
