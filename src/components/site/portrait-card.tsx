@@ -15,14 +15,26 @@ function cracks(seed: number) {
  * A cut-out portrait treated in the site's style: graded monochrome, gold seams that only exist
  * on the figure (the image's own alpha masks the overlay), fading into the stone at the bottom.
  */
-export function PortraitCard({ src, label, seed }: { src: string; label: string; seed: number }) {
+export function PortraitCard({
+  src,
+  label,
+  seed,
+  alt = "",
+  className = "",
+}: {
+  src: string;
+  label?: string;
+  seed: number;
+  alt?: string;
+  className?: string;
+}) {
   const id = `portrait-${seed}`;
   const mask = { maskImage: `url(${src})`, WebkitMaskImage: `url(${src})`, maskSize: "100% 100%", WebkitMaskSize: "100% 100%" };
   return (
-    <figure className="flex flex-col items-center">
+    <figure className={`flex flex-col items-center ${className}`}>
       <div className="relative aspect-[4/5] w-full max-w-[400px]" style={mask}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={src} alt="" className="absolute inset-0 h-full w-full object-fill" />
+        <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-fill" />
         <svg aria-hidden viewBox="0 0 400 500" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
           <GoldDefs id={id} />
           <g fill={`url(#${id})`} filter={`url(#${id}-metal)`}>
@@ -32,7 +44,7 @@ export function PortraitCard({ src, label, seed }: { src: string; label: string;
           </g>
         </svg>
       </div>
-      <figcaption className="label mt-4">{label}</figcaption>
+      {label && <figcaption className="label mt-4">{label}</figcaption>}
     </figure>
   );
 }

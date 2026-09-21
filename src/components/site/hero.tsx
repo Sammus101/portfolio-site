@@ -1,5 +1,5 @@
 import { GoldDefs } from "@/components/fracture/gold-defs";
-import { KnowledgeGraph } from "@/components/fracture/knowledge-graph";
+import { PortraitCard } from "@/components/site/portrait-card";
 import { home } from "@/content/home";
 import { fracture, join } from "@/lib/crack";
 
@@ -68,8 +68,8 @@ export function Hero() {
             [{home.hero.cta.label}]
           </a>
         </div>
-        <div className="md:col-span-5 md:-mt-10 lg:-mr-8">
-          <KnowledgeGraph className="mx-auto h-auto w-full max-w-[520px]" />
+        <div className="md:col-span-5 md:-mt-6 lg:-mr-4">
+          <PortraitCard src="/images/portraits/hero.webp" alt="Portrait of Samuel Ehret" seed={3} className="mx-auto" />
         </div>
       </div>
     </section>

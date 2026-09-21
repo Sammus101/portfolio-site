@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { Band } from "@/components/home/band";
+import { FragmentGrid } from "@/components/home/fragment-grid";
 import { home } from "@/content/home";
 import { projects } from "@/content/projects";
 
@@ -8,18 +9,7 @@ export function Fragments() {
   const { title, steps } = home.fragments;
   return (
     <Band title={title} tear={0}>
-      <ol className="mx-auto flex max-w-4xl flex-wrap items-baseline justify-center gap-x-3 gap-y-4 font-serif text-[clamp(22px,5vw,32px)] text-ivory">
-        {steps.map((step, i) => (
-          <li key={step} className={`flex items-baseline gap-3 ${i % 2 ? "md:translate-y-3" : ""}`}>
-            {step}
-            {i < steps.length - 1 && (
-              <span aria-hidden className="font-sans text-[0.7em] text-gold-600">
-                →
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
+      <FragmentGrid steps={steps} />
     </Band>
   );
 }
