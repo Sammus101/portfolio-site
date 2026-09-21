@@ -43,7 +43,34 @@ export const home = {
 
   mind: {
     title: "What Occupies My Mind",
-    topics: ["AI", "Climate", "Investing", "Science", "Technology", "Human nature"],
+    // `label` is the card name; `subtitle` and `text` appear when the card is opened.
+    topics: [
+      {
+        label: "Life",
+        subtitle: "Trying to understand what makes a life worth living.",
+        text: "Understanding how to live a worthwhile life is one of the most important pursuits an individual can undertake. This search has taken me through ancient philosophy, modern psychology, different cultures, and experiences that have fundamentally changed how I see the world.",
+      },
+      {
+        label: "Investing",
+        subtitle: "Understanding businesses, systems, and where value comes from.",
+        text: "Investing brings together many of the things I enjoy studying: businesses, products, markets, incentives, and complex systems. I enjoy understanding how companies create value, where their advantages come from, and how those insights can translate into long-term investment opportunities.",
+      },
+      {
+        label: "Human Nature",
+        subtitle: "Understanding what drives people, and how we can work together.",
+        text: "Learning about psychology, communication, and human nature is one of the most useful tools for navigating both the world and ourselves. I want to understand what drives us, what makes us change, and how incentives can be aligned to solve problems together.",
+      },
+      {
+        label: "Science",
+        subtitle: "Exploring the unknown.",
+        text: "The search to understand our universe is one of humanity's oldest pursuits. From Aristotle to Newton and beyond, we have continually pushed the boundaries of what we know. Every discovery reveals another layer of the extraordinary complexity of existence.",
+      },
+      {
+        label: "Technology",
+        subtitle: "A tool for shaping the future.",
+        text: "To me, technology is where scientific understanding meets human ambition. It can alleviate some of the world's greatest challenges, while creating new ones when poorly understood or misused. I want to understand that double-edged power and use it to improve the human condition.",
+      },
+    ],
   },
 
   selectedWork: {

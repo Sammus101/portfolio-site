@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Band } from "@/components/home/band";
 import { FragmentGrid } from "@/components/home/fragment-grid";
+import { MindCards } from "@/components/home/mind-cards";
 import { home } from "@/content/home";
 import { projects } from "@/content/projects";
 
@@ -18,16 +19,7 @@ export function Mind() {
   const { title, topics } = home.mind;
   return (
     <Band title={title} tear={1}>
-      <ul className="mx-auto grid max-w-5xl grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-        {topics.map((topic) => (
-          <li
-            key={topic}
-            className="flex min-h-28 items-center justify-center border border-slate bg-surface px-3 text-center font-serif text-[22px] leading-tight text-ivory md:min-h-36"
-          >
-            {topic}
-          </li>
-        ))}
-      </ul>
+      <MindCards topics={topics} />
     </Band>
   );
 }

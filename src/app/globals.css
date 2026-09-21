@@ -185,8 +185,8 @@
   }
 }
 
-/* "A Life in Fragments" card icons. Resting drawing by default; alive while the card is hovered
-   or focused (focus covers tap on touch screens). Markup: src/components/home/fragment-icons.tsx */
+/* "A Life in Fragments" card icons. Resting drawing by default; alive while the card is open
+   (hovered, or pinned open by a click or tap; see fragment-grid.tsx). Markup: src/components/home/fragment-icons.tsx */
 .frag svg * {
   transform-box: fill-box;
 }
@@ -203,20 +203,20 @@
 .frag .f-leaf-a { transform-origin: 100% 100%; }
 .frag .f-leaf-b { transform-origin: 0% 100%; transition-delay: 0.2s; }
 .frag .f-leaf-c { transform-origin: 50% 100%; transition-delay: 0.4s; }
-.frag:is(:hover, :focus) .f-stem { stroke-dashoffset: 0; }
-.frag:is(:hover, :focus) .f-leaf { transform: scale(1); opacity: 1; }
+.frag[data-open="true"] .f-stem { stroke-dashoffset: 0; }
+.frag[data-open="true"] .f-leaf { transform: scale(1); opacity: 1; }
 
 .frag .f-meridian { transform-origin: center; }
 .frag .f-meridian-b { transform: scaleX(0.5); }
-.frag:is(:hover, :focus) .f-meridian { animation: f-spin 4s linear infinite; }
-.frag:is(:hover, :focus) .f-meridian-b { animation-delay: -2s; }
+.frag[data-open="true"] .f-meridian { animation: f-spin 4s linear infinite; }
+.frag[data-open="true"] .f-meridian-b { animation-delay: -2s; }
 @keyframes f-spin {
   0% { transform: scaleX(1); }
   50% { transform: scaleX(0.02); }
   100% { transform: scaleX(1); }
 }
 
-.frag:is(:hover, :focus) .f-lens { animation: f-scan 3.2s ease-in-out infinite; }
+.frag[data-open="true"] .f-lens { animation: f-scan 3.2s ease-in-out infinite; }
 @keyframes f-scan {
   0%, 100% { transform: translate(0, 0); }
   30% { transform: translate(14px, 8px); }
@@ -227,7 +227,7 @@
 .frag .f-layer { transition: transform 0.7s cubic-bezier(0.3, 0.9, 0.3, 1); }
 .frag .f-layer-1 { transform: translateY(-9px); }
 .frag .f-layer-3 { transform: translateY(8px); }
-.frag:is(:hover, :focus) .f-layer { transform: translateY(0); }
+.frag[data-open="true"] .f-layer { transform: translateY(0); }
 
 .frag .f-signal path {
   stroke: var(--gold-100);
@@ -235,7 +235,7 @@
   stroke-dashoffset: 0.22;
   opacity: 0;
 }
-.frag:is(:hover, :focus) .f-signal path {
+.frag[data-open="true"] .f-signal path {
   opacity: 1;
   animation: f-flow 1.6s linear infinite;
 }
@@ -243,7 +243,7 @@
   to { stroke-dashoffset: -1; }
 }
 .frag .f-node { transform-origin: center; }
-.frag:is(:hover, :focus) .f-node { animation: f-pulse 1.4s ease-in-out infinite; }
+.frag[data-open="true"] .f-node { animation: f-pulse 1.4s ease-in-out infinite; }
 @keyframes f-pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.55); }
