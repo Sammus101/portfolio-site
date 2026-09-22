@@ -5,6 +5,7 @@ import { FragmentGrid } from "@/components/home/fragment-grid";
 import { MindCards } from "@/components/home/mind-cards";
 import { home } from "@/content/home";
 import { projects } from "@/content/projects";
+import { WORK_GRAPHICS } from "@/components/home/work-graphics";
 
 export function Fragments() {
   const { title, steps } = home.fragments;
@@ -29,15 +30,25 @@ export function SelectedWork() {
   return (
     <Band id="work" title={title} tear={2}>
       <ul className="mx-auto grid max-w-5xl gap-4 text-left md:grid-cols-3">
-        {projects.slice(0, 3).map((p, i) => (
-          <li key={p.id} className="flex min-h-44 flex-col border border-slate bg-surface p-5">
-            <span className="label">
-              [{String(i + 1).padStart(2, "0")}. {p.title}]
-            </span>
-            <p className="body mt-3 text-sm text-ash">{p.description}</p>
-            <span className="label mt-auto pt-4 text-ash">{p.tags.join(" · ")}</span>
-          </li>
-        ))}
+        {projects.slice(0, 3).map((p, i) => {
+          const Graphic = WORK_GRAPHICS[p.id];
+          return (
+            <li key={p.id} className="flex flex-col border border-slate bg-surface">
+              {Graphic && (
+                <div className="aspect-[16/10] w-full border-b border-slate bg-void/40">
+                  <Graphic className="h-full w-full" />
+                </div>
+              )}
+              <div className="flex min-h-44 flex-1 flex-col p-5">
+                <span className="label">
+                  [{String(i + 1).padStart(2, "0")}. {p.title}]
+                </span>
+                <p className="body mt-3 text-sm text-ash">{p.description}</p>
+                <span className="label mt-auto pt-4 text-ash">{p.tags.join(" · ")}</span>
+              </div>
+            </li>
+          );
+        })}
       </ul>
       <div className="mx-auto mt-8 max-w-5xl md:text-right">
         <Link href={viewAll.href} className="nav-link text-ivory transition-colors hover:text-gold-600">
